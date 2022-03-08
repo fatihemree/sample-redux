@@ -1,6 +1,6 @@
 import React from 'react'
-import { Table, Space, Button } from 'antd';
-import { CheckCircleFilled, CloseCircleFilled, LeftOutlined, } from '@ant-design/icons';
+import { Table, Space, Button, Row, Col } from 'antd';
+import { CheckCircleFilled, CloseCircleFilled } from '@ant-design/icons';
 
 export default function CustomTable() {
 
@@ -9,7 +9,7 @@ export default function CustomTable() {
     {
       title: 'statu',
       dataIndex: 'statu',
-      render: (statu, record) => statu ? <CheckCircleFilled className='green-text' /> : <CloseCircleFilled className='red-text' />,
+      render: (statu, record) => statu ? <CheckCircleFilled className='green-text icon-size' /> : <CloseCircleFilled className='red-text icon-size' />,
     },
     {
       title: 'task',
@@ -19,11 +19,17 @@ export default function CustomTable() {
     {
 
       title: 'Action',
+      width: 150,
       render: (text, record) => (
-        <Space align='center' size="middle">
-          {record.statu ? <Button type='primary'>Tamamla</Button> : <Button type='ghost'>Undo</Button>}
-          <Button type="primary" danger>Sil</Button>
-        </Space>
+        <Row justify='end'>
+          <Col>
+            <Space align='center' size="middle">
+              {record.statu ? <Button type='primary'>Tamamla</Button> : <Button type='ghost'>Undo</Button>}
+              <Button type="primary" danger>Sil</Button>
+              <Button type="text" text>Düzenle</Button>
+            </Space>
+          </Col>
+        </Row>
       ),
     },
   ];
@@ -48,9 +54,9 @@ export default function CustomTable() {
   ];
   return (
     <Table
-      columns={columns} 
+      columns={columns}
       dataSource={data?.length ? data : null}
-      
+
     // onRow={(record, rowIndex) => {
     // return {
     //   onClick: event => {console.log(record)}, // click row

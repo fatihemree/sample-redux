@@ -7,7 +7,7 @@ import SampleContext from "./sample-context/SampleContext";
 import SampleState from "./sample-state/SampleState";
 
 function App() {
-  const titleArray = useMemo(() => ['state', 'context', 'redux', 'redux-toolkit', 'mobx'], []);
+  const titleArray = useMemo(() => ['state', 'context', 'redux', 'r-toolkit', 'mobx'], []);
   const [pageIndex, setPageIndex] = useState(0);
   const [title, setTitle] = useState(titleArray[0]);
   useEffect(() => {

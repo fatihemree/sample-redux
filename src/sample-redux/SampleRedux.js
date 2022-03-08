@@ -1,9 +1,9 @@
-import { Button, PageHeader, Row } from 'antd'
+import { Button, Col, PageHeader, Row } from 'antd'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import CustomInput from '../component/CustomInput';
-import { increment, setUser } from './store/action';
+import { increment, setTodo, setUser } from './store/action';
 export default function SampleRedux() {
     const navigate = useNavigate();
     const dispatch = useDispatch()
@@ -16,7 +16,10 @@ export default function SampleRedux() {
                     <Button type="primary" style={window.location.pathname.includes('user') ? { background: 'blue' } : {}} onClick={() => navigate('user')}>User</Button>,
                     <Button type="primary" style={window.location.pathname.includes('todo') ? { background: 'blue' } : {}} onClick={() => navigate('todo')}>Todo</Button>
                 ]} />
+            <h2>User name change</h2>
             <CustomInput callClick={(val) => dispatch(setUser(val))}></CustomInput>
+            <h2>Todo[0] task change </h2>
+            <CustomInput callClick={(val) => dispatch(setTodo(val))}></CustomInput>
             <Routes>
                 <Route path='counter' element={<Counter></Counter>} />
                 <Route path='user' element={<User></User>} />
@@ -35,8 +38,8 @@ const Counter = () => {
             <h4>Counter</h4>
             <Button type='primary' onClick={() => dispatch(increment())}> INCREMENT </Button>
             <h1>{counter}</h1>
-           <Row>
-           </Row>
+            <Row>
+            </Row>
         </>
     )
 }
@@ -59,6 +62,7 @@ const Todo = () => {
     const todo = useSelector(state => state.todo);
 
     return (
+        console.log('renderTodo', todo),
         <>
             <h4>Todo</h4>
             <code>

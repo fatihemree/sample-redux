@@ -4,12 +4,15 @@ import { useEffect, useMemo, useState } from "react";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import TodoProvider from "./sample-context/ProviderContext";
 import SampleContext from "./sample-context/SampleContext";
+import ProviderRedux from "./sample-redux/ProviderRedux";
+import SampleRedux from "./sample-redux/SampleRedux";
 import SampleState from "./sample-state/SampleState";
 
 function App() {
   const titleArray = useMemo(() => ['state', 'context', 'redux', 'r-toolkit', 'mobx'], []);
   const [pageIndex, setPageIndex] = useState(0);
   const [title, setTitle] = useState(titleArray[0]);
+  
   useEffect(() => {
     setTitle(titleArray[pageIndex]);
   }, [pageIndex, titleArray])
@@ -22,8 +25,8 @@ function App() {
         extra={titleArray.map((text, i) => <Link to={`/${text}`}><Button onClick={() => setPageIndex(i)} style={window.location.pathname.includes(text)  ? { background: 'blue' } : {}} type='primary' >{text}</Button></Link>)} />
       <Routes >
         <Route path="state" element={<SampleState />}/>
-      
         <Route  path="context/*" element={<TodoProvider><SampleContext /></TodoProvider>}/>
+        <Route  path="redux/*" element={<ProviderRedux><SampleRedux /></ProviderRedux>}/>
        
       </Routes>
     </BrowserRouter>

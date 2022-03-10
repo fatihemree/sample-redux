@@ -33,8 +33,9 @@ export default function SampleReduxToolkit() {
 
 
 const Counter = () => {
-    const counter = useSelector(state => state.counter);
+    const counter = useSelector(state => state.counter.value);
     const dispatch = useDispatch();
+    console.log(counterAction);
     return (
         console.log('renderCounter', counter),
         <>

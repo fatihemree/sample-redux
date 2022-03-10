@@ -4,6 +4,8 @@ import { useEffect, useMemo, useState } from "react";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import TodoProvider from "./sample-context/ProviderContext";
 import SampleContext from "./sample-context/SampleContext";
+import ProviderReduxToolkit from "./sample-redux-toolkit/ProviderReduxToolkit";
+import SampleReduxToolkit from "./sample-redux-toolkit/SampleReduxToolkit";
 import ProviderRedux from "./sample-redux/ProviderRedux";
 import SampleRedux from "./sample-redux/SampleRedux";
 import SampleState from "./sample-state/SampleState";
@@ -27,7 +29,7 @@ function App() {
         <Route path="state" element={<SampleState />}/>
         <Route  path="context/*" element={<TodoProvider><SampleContext /></TodoProvider>}/>
         <Route  path="redux/*" element={<ProviderRedux><SampleRedux /></ProviderRedux>}/>
-       
+        <Route  path="r-toolkit/*" element={<ProviderReduxToolkit><SampleReduxToolkit/></ProviderReduxToolkit>}/>
       </Routes>
     </BrowserRouter>
   );

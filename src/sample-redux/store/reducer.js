@@ -22,17 +22,17 @@ import produce from 'immer';
 // immer modifed recuer
 const user = produce((draft, action) => {
     switch (action.type) {
-                case SET_USER:
-                    draft.name=action.payload
-                   break;
-                default:
-                    return draft;
-            }
+        case SET_USER:
+            draft.name = action.payload
+            break;
+        default:
+            return draft;
+    }
 
-},{
-        name: 'fatih',
-        age: 22
-    });
+}, {
+    name: 'fatih',
+    age: 22
+});
 
 const counter = (state = 0, action) => {
     switch (action.type) {
@@ -47,18 +47,18 @@ const counter = (state = 0, action) => {
 
 const todo = produce((draft, action) => {
     switch (action.type) {
-case SET_TODO:
-    draft[0].task = action.payload;
-    break;
+        case SET_TODO:
+            draft[0].task = action.payload;
+            break;
         default:
             return draft
     }
-},[
+}, [
     {
         key: '1',
         task: 'birinci',
         statu: true,
-    },{
+    }, {
         key: '2',
         task: 'ikinci',
         statu: true,

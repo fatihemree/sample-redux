@@ -3,7 +3,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import CustomInput from '../component/CustomInput'
-import { counterAction } from './store/reducer';
+import { counterAction, userAction } from './store/reducer';
 export default function SampleReduxToolkit() {
     const navigate = useNavigate();
     const dispatch = useDispatch()
@@ -18,7 +18,7 @@ export default function SampleReduxToolkit() {
                     <Button type="primary" style={window.location.pathname.includes('todo') ? { background: 'blue' } : {}} onClick={() => navigate('todo')}>Todo</Button>
                 ]} />
             <h2>User name change</h2>
-            <CustomInput callClick={(val) => dispatch(counterAction.increment())}></CustomInput>
+            <CustomInput callClick={(val) => dispatch(userAction.changeName(val))}></CustomInput>
             <h2>Todo[0] task change </h2>
             <CustomInput callClick={(val) => { }}></CustomInput>
             <Routes>
@@ -47,14 +47,14 @@ const Counter = () => {
 }
 
 const User = () => {
-
+    const user = useSelector(state => state.user);
     return (
-        // console.log('renderUser', user),
+        console.log('renderUser', user),
         <>
             <h4>User</h4>
             <code>
                 <p>User Redux</p>
-                {/* {JSON.stringify(user, '\r')} */}
+                {JSON.stringify(user, '\r')}
             </code>
         </>
     )

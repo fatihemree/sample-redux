@@ -8,7 +8,6 @@ import { createSlice } from '@reduxjs/toolkit'
   },
   reducers: {
     increment: (state) => {
-      console.log('girdi',state);
       state.value += 1;
       console.log(state);
     },
@@ -22,4 +21,21 @@ import { createSlice } from '@reduxjs/toolkit'
 })
 
 export const counterAction=counterSlice.actions;
-export const counterReducer= counterSlice.reducer
+export const counterReducer= counterSlice.reducer;
+
+
+const userSlice = createSlice({
+  name: 'user',
+  initialState:{
+    name:'fatih',
+    age:24,
+  },
+  reducers: {
+    changeName: (state,action) => {
+      state.name=action.payload;
+    },
+  },
+})
+
+export const userAction=userSlice.actions;
+export const userReducer= userSlice.reducer
